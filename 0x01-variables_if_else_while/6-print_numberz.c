@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * Discription: A C program that prints
- * all single digit numbers of base 10 starting from 0
+ * all single digit numbers of base 10 starting from 0 using putchar
  *
  * Return: Always 0 (Success)
  */
