@@ -14,14 +14,15 @@ int main(void)
 {
 	int n = 0;
 
-	for  (n ; n < 9 ; n++)
+	while (n < 9)
 	{
 		int m = 0;
 
-		for (m ; m <= 9 ; m++)
+		while (m <= 9)
 		{
 			if (m == n || m < n)
 			{
+				m++;
 				continue;
 			} else
 			{
@@ -33,7 +34,9 @@ int main(void)
 					putchar(' ');
 				}
 			}
+			m++;
 		}
+		n++;
 	}
 	putchar('\n');
 	return (0);
