@@ -18,7 +18,7 @@ void print_to_98(int n)
 			n--;
 		}
 	}
-	else (n < 98)
+	else
 	{
 		while (n < 98)
 		{
