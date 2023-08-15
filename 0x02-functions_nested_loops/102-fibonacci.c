@@ -14,14 +14,14 @@ int main(void)
 	int i;
 	int f = 0;
 	int g = 1;
-	int h;
+	int h = 1;
 
 	for (i = 1 ; i <= 50 ; i++)
 	{
 		printf("%d, ", h);
 		f = g;
 		g = h;
-		h + f + g;
+		h = f + g;
 	}
 	printf("\n");
 
