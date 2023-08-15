@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
 /**
  * main - Entry point
  *@c : Character to be printed
