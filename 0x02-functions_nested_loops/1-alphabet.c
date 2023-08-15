@@ -1,14 +1,11 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Discription : a C file for printing alphabet i lower case usnig _putchar()
- *
- * Return: Always 0 (Success)
+ * print_alphabet - a C file for printing alphabet in lower case
+ * usnig _putchar()
  */
 
-void print_alphabet(void)
+void print_alphabet(void) /* Function main body */
 {
 	char i = 'a';
 
