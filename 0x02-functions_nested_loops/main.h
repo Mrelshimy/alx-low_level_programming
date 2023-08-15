@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
+
 /**
  * main - Entry point
  *@c : Character to be printed
@@ -11,6 +12,8 @@
  * Return: Always 0 (Success)
  */
 
-int _putchar (char c);
+int _putchar(char c);
+void print_alphabet(void);
+void print_alphabet_x10(void);
 
 #endif
