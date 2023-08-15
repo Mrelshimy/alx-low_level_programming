@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _isalpha - Function for checking a letter is lower case
+ * _isalpha - Function for checking a var if alphabetic
  *@c : parameter
  *
  * Discription : a C file for checking if a letter is lower case
