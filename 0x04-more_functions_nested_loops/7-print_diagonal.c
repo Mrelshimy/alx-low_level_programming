@@ -2,9 +2,8 @@
 
 /**
  * print_diagonal - prints n times of \
- *@n : number of \ to print
  *
- * Return: On success 1.
+ * @n : number of \ to print
  */
 
 void print_diagonal(int n)
