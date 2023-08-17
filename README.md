@@ -1,1 +1,1 @@
-This is README file for C language learning repo
+README for new repo of C programming projects
