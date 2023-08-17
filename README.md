@@ -1,1 +1,1 @@
-README for new repo of C programming projects
+README file for C programming projects directory
