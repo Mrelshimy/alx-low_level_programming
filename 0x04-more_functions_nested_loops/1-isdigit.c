@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * _isupper - C prog for checking if int is digit
+  * _isdigit - C prog for checking if int is digit
   * @c : character to be checked
   *
   * Discription : Program for checking if int is digit
