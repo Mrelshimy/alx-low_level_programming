@@ -11,8 +11,8 @@
 
 char *leet(char *str)
 {
-	new[] = "43071";
-	lett[] = "AEOTL";
+	char new[] = "43071";
+	char lett[] = "AEOTL";
 	int i;
 	int j;
 
@@ -21,7 +21,7 @@ char *leet(char *str)
 		for (j = 0; lett[j]; j++)
 		{
 			if (str[i] == lett[j] || str[i] == lett[j] + 32)
-				str = new[j];
+				str[i] = new[j];
 		}
 	}
 
