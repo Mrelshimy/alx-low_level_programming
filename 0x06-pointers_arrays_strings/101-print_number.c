@@ -1,28 +1,28 @@
 #include "main.h"
 
 /**
- *print_number - encodes string usinr ROT13
+ *print_number - prints intiger
  *@n :int
  *
  *Discription Function to print integer
  *
- *Return: str
  */
 
 void print_number(int n)
 {
-	unsigned int i = 0;
+	unsigned int n1;
 
-	i = n;
+	n1 = n;
+
 	if (n < 0)
 	{
 		_putchar('-');
-		i = -n;
+		n1 = -n;
 	}
 
-	if (i / 10 != 0)
+	if (n1 / 10 != 0)
 	{
-		print_number(i / 10);
+		print_number(n1 / 10);
 	}
-	_putchar((i % 10) + '0');
+	_putchar((n1 % 10) + '0');
 }
