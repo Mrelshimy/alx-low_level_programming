@@ -15,13 +15,14 @@ int _strcmp(char *s1, char *s2)
 	int i = 0;
 	int j = 0;
 
-	for (i; s1[i]; i++)
+	while (s1[i])
 	{
 		if (s1[i] != s2[i])
 		{
 			j = ((int)s1[i] - 48) - ((int)s2[i] - 48);
 			break;
 		}
+		i++;
 	}
 
 	return (j);
