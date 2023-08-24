@@ -11,17 +11,25 @@
 
 char *rot13(char *str)
 {
-	int i = 0;
+	int j = 0;
+	char old[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char new[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (str[i])
+	while (str[j])
 	{
-		if ((str[i] >= 'A' && str[i] <= 'M') || (str[i] >= 'a' && str[i] <= 'm'))
-			str[i] = str[i] + 13;
-		else if (str[i] >= 'N' && str[i] <= 'Z')
-			str[i] = str[i] - 13;
-		else if (str[i] >= 'n' && str[i] <= 'z')
-			str[i] = str[i] - 13;
-		i++;
+		int i = 0;
+
+		while (i < 52)
+		{
+			if (str[j] == old[i])
+			{
+				str[j] = new[i];
+				break;
+			}
+			i++;
+		}
+
+		j++;
 	}
 	return (str);
 }
