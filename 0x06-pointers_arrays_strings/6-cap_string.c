@@ -12,12 +12,25 @@
 char *cap_string(char *str)
 {
 	int i = 0;
+	char deli[] = " \t\n,;.!?\"(){}";
 
-	for (i ; str[i]; i++)
+	while (str[i])
 	{
-		if ((str[i] >= 32 && str[i] <= 34) |:wq
-				| str[i] == ';')
-			str[i+1] -= 32;
+		int j = 0;
+
+		while (j < 16)
+		{
+			if (str[i] == deli[j])
+			{
+				if (str[i + 1] >= 97 && str[i + 1] <= 122)
+				{
+					str[i + 1] = str[i + 1] - 32;
+					break;
+				}
+			}
+			j++;
+		}
+		i++;
 	}
 
 	return (str);
