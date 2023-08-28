@@ -20,7 +20,7 @@ void print_diagsums(int *a, int size)
 		a += size;
 	}
 
-	printf("%d", d1);
-	printf("%di\n", d2);
+	printf("%d, ", d1);
+	printf("%d\n", d2);
 }
 
