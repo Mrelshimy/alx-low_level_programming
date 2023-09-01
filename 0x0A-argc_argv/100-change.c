@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
 	if (num < 0)
 	{
-		printf("Error\n");
+		printf("0\n");
 		return (1);
 	}
 
