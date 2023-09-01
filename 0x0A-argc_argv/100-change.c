@@ -15,14 +15,18 @@ int main(int argc, char *argv[])
 {
 	int cent[] = {25, 10, 5, 2, 1};
 	int i;
-	int num = atoi(argv[1]);
-	int count = 0;
+	int num;
+	int count;
 
 	if (argc != 2)
 	{
-		printf("Error");
+		printf("Error\n");
 		return (1);
 	}
+
+	num = atoi(argv[1]);
+	count = 0;
+
 	if (num < 0)
 	{
 		printf("Error\n");
