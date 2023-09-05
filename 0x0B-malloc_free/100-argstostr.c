@@ -3,8 +3,7 @@
 
 /**
   * argstostr - C prog to concatenate arguments
-  * @ac : args count
-  * @av : args array
+  * @s : string
   *
   * Discription : Program to concatenate arguments
   *
