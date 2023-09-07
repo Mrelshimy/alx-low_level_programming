@@ -3,8 +3,11 @@
 
 /**
   * main - entry point
+  *@argv : Args arrat
   *
   * Discription : Program for multiplication of 2 positive nums
+  *
+  *Return: multiplication
   */
 
 int main(int argc. char *argv[])
@@ -35,6 +38,6 @@ int main(int argc. char *argv[])
 			printf("Error\n");
 			exit(98);
 		}
-	}	
-	ptr = malloc(num1 * num2)
+	}
+	ptr = malloc(num1 * num2);
 }
