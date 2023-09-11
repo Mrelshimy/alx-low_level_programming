@@ -15,19 +15,13 @@
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
-	int j = 0;
 
 	while (src[i] != '\0')
 	{
+		dest[i] = src[i];
 		i++;
 	}
-
-	while (j < i)
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	dest[j] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -50,7 +44,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *ndog;
 	int i = 0, j = 0;
 
-	if (name == NULL || age < 0 || owner == NULL)
+	if (name == NULL || age <= 0 || owner == NULL)
 		return (0);
 
 	while (name[i] != '\0')
