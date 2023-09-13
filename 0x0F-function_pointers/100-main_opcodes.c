@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
 	}
 	p = (char *)main;
 
-	for (i = 0; i <= size; i++)
-		printf("%02hhx\n", p[i]);
+	for (i = 0; i < size; i++)
+		printf("%02hhx ", p[i]);
+	printf("%02hhx\n", p[i]);
 	return (0);
 }
