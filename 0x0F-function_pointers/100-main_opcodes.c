@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < size; i++)
 	{
-		if ( i == size - 1)
+		if (i == size - 1)
 		{
 			printf("%02hhx\n", p[i]);
 			break;
