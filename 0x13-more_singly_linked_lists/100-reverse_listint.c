@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- *delete_nodeint_at_index - function to reverse a linked list
+ *reverse_listint - function to reverse a linked list
  *@head: list
  *
  *Discription: Function to reverse a linked list
