@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- *delete_nodeint_at_index - function to reverse a linked list 
+ *delete_nodeint_at_index - function to reverse a linked list
  *@head: list
  *
  *Discription: Function to reverse a linked list
@@ -11,17 +11,16 @@
 
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *prevn, *currn, *nextn;
+	listint_t *prevn, *currn;
 
-	prevn = NULL;
-	currn = nextn = (*head);
+	prevn = currn = NULL;
 
-	while (nextn != 0)
+	while (*head != 0)
 	{
-		nextn = nextn->next;
-		currn->next = prevn;
-		prevn = currn;
-		currn = nextn;
+		currn = (*head)->next;
+		(*head)->next = prevn;
+		prevn = *head;
+		*head = currn;
 	}
 	(*head) = prevn;
 	return (*head);
