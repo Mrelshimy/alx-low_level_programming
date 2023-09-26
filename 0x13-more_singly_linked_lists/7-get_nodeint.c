@@ -12,12 +12,11 @@
 
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *nnode, *hold;
+	listint_t *hold;
 	unsigned int i = 0;
 	hold = head;
 
-	nnode = malloc(sizeof(listint_t));
-	if (nnode == NULL)
+	if (hold == NULL)
 		return (NULL);
 
 	while (i < index)
@@ -26,8 +25,5 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 		i++;
 	}
 
-	nnode->next = hold->next;
-	hold->next = nnode;
-
-	return (nnode);
+	return (hold);
 }
