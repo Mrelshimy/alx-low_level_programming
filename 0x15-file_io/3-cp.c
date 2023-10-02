@@ -11,38 +11,46 @@
  *Return: 0 on success
  */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	int tfp, ffp, l = 0;
+	int tfp, ffp;
 	int rt, wt;
-	char *readsize;	
+	char readsize[BUFF_SIZE];
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit (97);
+		exit(97);
 	}
 
 	ffp = open(argv[1], O_RDONLY);
-	l = strlen(argv[1]);
-	readsize = malloc(l);
-	rt = read(ffp, readsize, l);
-	if (ffp == -1 || rt == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
-		exit (98);
-	}
-
+	rt = read(ffp, readsize, BUFF_SIZE);
 	tfp = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	wt = write(tfp, readsize, rt);
-	if (tfp == -1 || wt == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: Can't write to file %s\n", argv[2]);
-		exit (99);
-	}
 
-	free(readsize);
-	close(ffp);
-	close(tfp);
+	do {
+		if (ffp == -1 || rt == -1)
+		{
+			dprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		wt = write(tfp, readsize, rt);
+		if (tfp == -1 || wt == -1)
+		{
+			dprintf(STDERR_FILENO, "ERROR: Can't write to file %s\n", argv[2]);
+			exit(99);
+		}
+		rt = read(ffp, readsize, BUFF_SIZE);
+		tfp = open(argv[2], O_WRONLY | O_APPEND);
+	} while (rt > 0);
+	if (close(ffp) == -1 || close(tfp) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ffp);
+		exit(100);
+	}
+	if (close(tfp) == -1 || close(tfp) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", tfp);
+		exit(100);
+	}
 	return (0);
 }
