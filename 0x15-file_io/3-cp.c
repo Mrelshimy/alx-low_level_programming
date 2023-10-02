@@ -14,7 +14,7 @@
 int main(int argc, char *argv[])
 {
 	int tfp, ffp;
-	int rt, wt;
+	int rt;
 	char readsize[BUFF_SIZE];
 
 	if (argc != 3)
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	ffp = open(argv[1], O_RDONLY);
 	if (ffp == -1)
 	{
-		eprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	tfp = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
