@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	do {
 		if (ffp == -1 || rt == -1)
 		{
-			dprintf(STDERR_FILENO, "ERROR: Can't read from %s\n", argv[1]);
+			dprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
 		wt = write(tfp, readsize, rt);
@@ -42,12 +42,12 @@ int main(int argc, char *argv[])
 		rt = read(ffp, readsize, BUFF_SIZE);
 		tfp = open(argv[2], O_WRONLY | O_APPEND);
 	} while (rt > 0);
-	if (close(ffp) == -1 || close(tfp) == -1)
+	if (close(ffp) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ffp);
 		exit(100);
 	}
-	if (close(tfp) == -1 || close(tfp) == -1)
+	if (close(tfp) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", tfp);
 		exit(100);
