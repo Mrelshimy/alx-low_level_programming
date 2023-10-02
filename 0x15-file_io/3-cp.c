@@ -1,7 +1,5 @@
 #include "main.h"
 
-char *buff(char *filename);
-void closef(int fp);
 
 /**
  * buff - mallocs 1024 bytes.
