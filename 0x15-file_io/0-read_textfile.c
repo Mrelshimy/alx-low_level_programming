@@ -13,7 +13,8 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	char *readsize;
-	ssize_t textread
+
+	ssize_t textread;
 	ssize_t fp = open(filename, O_RDONLY);
 	ssize_t textout;
 
