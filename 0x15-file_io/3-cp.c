@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[])
 {
-	int tfp, ffp;
+	int tfp = 0, ffp = 0;
 	int rt;
 	char readsize[BUFF_SIZE];
 
@@ -27,13 +27,13 @@ int main(int argc, char *argv[])
 	{	dprintf(STDERR_FILENO, "ERROR: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	tfp = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	tfp = open(argv[2], O_WRONLY | O_WRONLY | O_TRUNC, 0664);
 	if (tfp == -1)
 	{	dprintf(STDERR_FILENO, "ERROR: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	while ((rt = read(ffp, readsize, BUFF_SIZE)) > 0)
-		if(write(tfp, readsize, rt) != rt)
+		if (write(tfp, readsize, rt) != rt)
 		{	dprintf(STDERR_FILENO, "ERROR: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
@@ -42,11 +42,13 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (close(ffp) == -1)
+	ffp = close(ffp);
+	tfp = close(tfp);
+	if (ffp)
 	{	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ffp);
 		exit(100);
 	}
-	if (close(tfp) == -1)
+	if (tfp)
 	{	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", tfp);
 		exit(100);
 	}
