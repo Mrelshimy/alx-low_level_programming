@@ -2,57 +2,34 @@
 
 
 /**
-
- * create_file - Creates a file.
-
- * @filename: A pointer to the name of the file to create.
-
- * @text_content: A pointer to a string to write to the file.
-
+ * create_file - Function to create file.
+ * @filename: pointer to filename
+ * @text_content: pointer to text content
  *
-
- * Return: If the function fails - -1.
-
- *         Otherwise - 1.
-
+ * Return: 1 success -1 fail.
+ * 
  */
 
 int create_file(const char *filename, char *text_content)
-
 {
+	int fp;
+	int twrite;
+	int l = 0;
 
-        int fd, w, len = 0;
+	if (filename == NULL)
+		return (-1);
 
+	if (text_content != NULL)
+	{
+		for (l = 0; text_content[l];)
+			l++;
+	}
+	
+	fp = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	twrite = write(fd, text_content, l);
 
-        if (filename == NULL)
-
-                return (-1);
-
-
-        if (text_content != NULL)
-
-        {
-
-                for (len = 0; text_content[len];)
-
-                        len++;
-
-        }
-
-
-        fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-
-        w = write(fd, text_content, len);
-
-
-        if (fd == -1 || w == -1)
-
-                return (-1);
-
-
-        close(fd);
-
-
-        return (1);
-
+	if (fp== -1 || twrite == -1)
+		return (-1);
+	close(fd);
+	return (1);
 }
