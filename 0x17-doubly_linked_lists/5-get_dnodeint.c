@@ -10,7 +10,7 @@
 
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	unsigned int n;
+	unsigned int n = 0;
 
 	if (!head || !index)
 		return (NULL);
