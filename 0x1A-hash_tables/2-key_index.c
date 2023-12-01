@@ -5,7 +5,7 @@
   * @key: key input
   * @size: size of table array
   *
-  *Return: index of storage inside table
+  *Return: index of table
   */
 
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
