@@ -23,7 +23,6 @@ void hash_table_print(const hash_table_t *ht)
 			if (no_comma == 1)
 				printf(", ");
 			printf("'%s': '%s'", hold->key, hold->value);
-			hold = hold->next;
 			no_comma = 1;
 		}
 	}
