@@ -5,7 +5,7 @@
  * @ht: The hash table to add/update the key-value pair in.
  *
  */
-void hash_table_delete(const hash_table_t *ht)
+void hash_table_delete(hash_table_t *ht)
 {
 	hash_node_t *hold;
 	unsigned long int n;
@@ -15,14 +15,14 @@ void hash_table_delete(const hash_table_t *ht)
 
 	for (n = 0; n < ht->size; n++)
 	{
-		hold = ht->array[n];
-		while (hold != NULL)
+		while (ht->array[n] != NULL)
 		{
-			free(hold->key);
-			free(hold->value);
-			hold = hold->next;
+			hold = ht->array[n]->next;
+			free(ht->array[n]->key);
+			free(ht->array[n]->value);
+			free(ht->array[n]);
+			ht->array[n] = hold;
 		}
-		free(hold->array[n]);
 	}
 	free(ht->array);
 	free(ht);
