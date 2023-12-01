@@ -12,7 +12,7 @@ void hash_table_print(const hash_table_t *ht)
 	int no_comma = 0;
 
 	if (ht == NULL || ht->array == NULL)
-		printf("{}\n");
+		return;
 
 	printf("{");
 	for (n = 0; n < ht->size; n++)
@@ -23,6 +23,7 @@ void hash_table_print(const hash_table_t *ht)
 			if (no_comma == 1)
 				printf(", ");
 			printf("'%s': '%s'", hold->key, hold->value);
+			hold = hold->next;
 			no_comma = 1;
 		}
 	}
