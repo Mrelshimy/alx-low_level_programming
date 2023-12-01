@@ -4,7 +4,7 @@
   * hash_djb2 - C prog to implement djb2 algorithm
   * @str: key input
   *
-  *Return: index to stor key inside the table
+  *Return: Hash value 
   */
 
 unsigned long int hash_djb2(const unsigned char *str)
