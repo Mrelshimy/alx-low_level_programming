@@ -5,7 +5,7 @@
  * @key: The key.
  * @value: The value associated with the key.
  *
- * Return: pointer to node
+ * Return: pointer to new node
  */
 hash_node_t *create_node(const char *key, const char *value)
 {
