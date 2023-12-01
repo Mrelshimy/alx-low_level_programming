@@ -1,6 +1,40 @@
 #include "hash_tables.h"
 
 /**
+ * create_node - creates hash node.
+ * @key: The key.
+ * @value: The value associated with the key.
+ *
+ * Return: pointer to node
+ */
+hash_node_t *create_node(const char *key, const char *value)
+{
+	hash_node_t *nnode;
+
+	nnode = malloc(sizeof(hash_node_t));
+	if (nnode == NULL)
+		return (NULL);
+
+	nnode->key = strdup(key);
+	if (nnode->key == NULL)
+	{
+		free(nnode);
+		return (NULL);
+	}
+
+	nnode->value = strdup(value);
+	if (nnode->value == NULL)
+	{
+		free(nnode->key);
+		free(nnode);
+		return (NULL);
+	}
+	nnode->next = NULL;
+	return (nnode);
+}
+
+
+/**
  * hash_table_set - Adds an element to the hash table.
  * @ht: The hash table to add/update the key-value pair in.
  * @key: The key.
@@ -10,65 +44,34 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *hash_nnode, *current;
-	unsigned long int hash;
+	hash_node_t *new_node, *hold;
+	unsigned long int slot;
+	char *nvalue;
 
-	if (ht == NULL || key == NULL)
+	if (ht == NULL || key == NULL || value == NULL || strlen(key) == 0)
 		return (0);
 
-	hash_nnode = malloc(sizeof(hash_node_t));
-	if (hash_nnode == NULL)
-		return (0);
-
-	hash_nnode->key = strdup(key);
-	if (hash_nnode->key == NULL)
+	slot = key_index((const unsigned char *)key, ht->size);
+	hold = ht->array[slot];
+	while (hold != NULL)
 	{
-		free(hash_nnode);
-		return (0);
-	}
-
-	hash_nnode->value = strdup(value);
-	if (hash_nnode->value == NULL)
-	{
-		free(hash_nnode->key);
-		free(hash_nnode);
-		return (0);
-	}
-
-	hash = hash_djb2((unsigned char *)key);
-	if (ht->array[hash] == NULL)
-	{
-		hash_nnode->next = NULL;
-		ht->array[hash] = hash_nnode;
-		return (1);
-	}
-
-	current = ht->array[hash];
-	while (current != NULL)
-	{
-		if (strcmp(current->key, key) == 0)
+		if (strcmp(hold->key, key) == 0)
 		{
-			free(current->value);
-			current->value = strdup(value);
-			if (current->value == NULL)
-			{
-				free(hash_nnode->key);
-				free(hash_nnode->value);
-				free(hash_nnode);
+			nvalue = strdup(value);
+			if (nvalue == NULL)
 				return (0);
-			}
+			free(hold->value);
+			hold->value = nvalue;
 			return (1);
 		}
-
-		if (current->next == NULL)
-			break;
-
-		current = current->next;
+		hold = hold->next;
 	}
 
-	hash_nnode->next = ht->array[hash];
-	ht->array[hash] = hash_nnode;
-
+	new_node = create_node(key, value);
+	if (new_node == NULL)
+		return (0);
+	new_node->next = ht->array[slot];
+	ht->array[slot] = new_node;
 	return (1);
 }
 
