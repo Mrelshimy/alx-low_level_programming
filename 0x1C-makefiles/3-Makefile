@@ -2,7 +2,7 @@ CC = gcc
 SRC = main.c school.c
 OBJ = main.o school.o
 NAME = school
-RM = rm
+RM = rm -f
 
 %.o: %.c
 	$(CC) -c $^ -o $@
