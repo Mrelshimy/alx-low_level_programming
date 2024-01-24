@@ -3,16 +3,15 @@
 
 
 def island_perimeter(grid):
-    """Island_perimeter function"""
-    count = 0
+    """Island perimeter function"""
 
-    for i in range(1, len(grid)):
-        for j in range(1, len(grid[i])):
-            if grid[i][j] == 1:
-                count += 4
-                if grid[i - 1][j] == 1:
-                    count -= 2
-                if grid[i][j - 1] == 1:
-                    count -= 2
+    counter = 0
 
-    return count
+    for i in grid:
+        for j in i:
+            if j == 1:
+                counter += 1
+    if counter == 0:
+        return 0
+
+    return (counter * 2) + 2
